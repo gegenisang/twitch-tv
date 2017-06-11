@@ -3,6 +3,7 @@ var channels = ["ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "storbeck"
 function makeUrl(type,name){
   return "https://wind-bow.gomix.me/twitch-api/"+type+"/"+name+"?callback=?";
 }
+//test
 function getMessage(){
 
   channels.forEach(function(channel) {
