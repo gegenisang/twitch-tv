@@ -4,6 +4,7 @@ function makeUrl(type,name){
   return "https://wind-bow.gomix.me/twitch-api/"+type+"/"+name+"?callback=?";
 }
 //test
+//sadrse
 function getMessage(){
 
   channels.forEach(function(channel) {
