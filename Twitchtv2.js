@@ -89,7 +89,9 @@ function getMessage() {
     // }
 }
 
-function filterSearch(status, searchValue) {
+
+
+function getSearchList(status, searchValue) {
     if (status === "online") {
         $(".fa-check").parents("li").show();
         $(".fa-exclamation").parents("li").hide();
@@ -99,47 +101,54 @@ function filterSearch(status, searchValue) {
     } else {
         $(".fa-exclamation").parents("li").show();
         $(".fa-check").parents("li").show();
-
     }
-    if (searchValue) {
-        $("#myUl li:visible .col-2").each(function() {
+    if(searchValue){
+        $("#myUl li:visible .col-2").each(function(){
             if ($(this).text().search(new RegExp(searchValue, "i")) > -1) {
                 $(this).parents("li").show();
             } else {
                 $(this).parents("li").hide();
             }
-
         });
     }
 }
 
-function getCurrentStatus() {
-    var current = $(".condition").find(".current")[0];
-    var status = current.getAttribute("id");
-    return status;
+function getCurrentStatus(){
+    var current = $('.condition').find(".current")[0];
+    var id = current.getAttribute("id");
+    return id;
 }
 
-function getSearchValue() {
+function getSearchText(){
     var search = $(".search_text input").val();
     return search;
 }
-
 $(document).ready(function() {
     getMessage();
+
     $(".condition a").click(function() {
+
         $(".current").removeClass("current");
         $(this).addClass("current");
+        
         var status = getCurrentStatus();
-        var search = getSearchValue();
-        filterSearch(status, search);
+        var search = getSearchText();
+        getSearchList(status,search);
     });
 
 
 
     $(".text").keyup(function() {
         var status = getCurrentStatus();
-        var search = getSearchValue();
-        filterSearch(status, search);
+        var search = getSearchText();
+        getSearchList(status,search);
+
     });
+
+
+
+
+
+
 
 });
